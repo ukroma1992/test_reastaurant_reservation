@@ -1,0 +1,742 @@
+  [1m[35m (292.6ms)[0m  [1m[35mCREATE DATABASE "test_reastaurant_reservation_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (241.3ms)[0m  [1m[35mCREATE DATABASE "test_reastaurant_reservation_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (13.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3914325795600031770)[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+Migrating to CreateRestaurants (20190222113107)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" bigserial primary key, "name" character varying, "address" character varying, "open" timestamp, "close" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190222113107_create_restaurants.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190222113107"]]
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-02-22 11:31:30.867917"], ["updated_at", "2019-02-22 11:31:30.867917"]]
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(3914325795600031770)[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3914325795600031770)[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+Migrating to CreateTables (20190222113231)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "tables" ("id" bigserial primary key, "number" integer, "num_seats" integer, "restaurant_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_0700cfe41e"
+FOREIGN KEY ("restaurant_id")
+  REFERENCES "restaurants" ("id")
+)[0m
+  ↳ db/migrate/20190222113231_create_tables.rb:3
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE  INDEX  "index_tables_on_restaurant_id" ON "tables"  ("restaurant_id")[0m
+  ↳ db/migrate/20190222113231_create_tables.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190222113231"]]
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(3914325795600031770)[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/bin/rake:23
+Started GET "/" for 127.0.0.1 at 2019-02-22 13:33:02 +0200
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/ukroma/.rvm/gems/ruby-2.5.3/gems/railties-5.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/ukroma/.rvm/gems/ruby-2.5.3/gems/railties-5.2.2/lib/rails/templates/rails/welcome/index.html.erb (5.6ms)
+Completed 200 OK in 23ms (Views: 14.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-02-22 14:04:02 +0200
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.2) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.2) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3914325795600031770)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20190222113602)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "phone_number" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190222113602_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190222113602"]]
+  ↳ bin/rails:9
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateReservations (20190222113756)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" bigserial primary key, "number_of_guests" integer, "from" timestamp, "to" timestamp, "table_id" bigint, "user_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_23ce71128d"
+FOREIGN KEY ("table_id")
+  REFERENCES "tables" ("id")
+, CONSTRAINT "fk_rails_48a92fce51"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  ↳ db/migrate/20190222113756_create_reservations.rb:3
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_table_id" ON "reservations"  ("table_id")[0m
+  ↳ db/migrate/20190222113756_create_reservations.rb:3
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_user_id" ON "reservations"  ("user_id")[0m
+  ↳ db/migrate/20190222113756_create_reservations.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190222113756"]]
+  ↳ bin/rails:9
+  [1m[35m (7.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(3914325795600031770)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for 127.0.0.1 at 2019-02-22 14:04:25 +0200
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  Rendered restaurants/index.html.erb within layouts/application (4.3ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    12:     </thead>
+    13: 
+    14:     <tbody>
+    15:       <% @restaurants.each do |restaurant| %>
+    16:         <tr  class="text-center">
+    17:           <td><%= restaurant.name %></td>
+    18:           <td><%= restaurant.address %></td>
+  
+app/views/restaurants/index.html.erb:15:in `_app_views_restaurants_index_html_erb___550977953248354807_27153480'
+Started GET "/" for 127.0.0.1 at 2019-02-22 14:08:55 +0200
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  Rendered restaurants/index.html.erb within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    12:     </thead>
+    13: 
+    14:     <tbody>
+    15:       <% @restaurants.each do |restaurant| %>
+    16:         <tr  class="text-center">
+    17:           <td><%= restaurant.name %></td>
+    18:           <td><%= restaurant.address %></td>
+  
+app/views/restaurants/index.html.erb:15:in `_app_views_restaurants_index_html_erb___2327824841495309131_40381400'
+Started GET "/restaurants.new" for 127.0.0.1 at 2019-02-22 14:09:06 +0200
+Processing by RestaurantsController#index as 
+  Rendering restaurants/index.html.erb within layouts/application
+  Rendered restaurants/index.html.erb within layouts/application (6.6ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    12:     </thead>
+    13: 
+    14:     <tbody>
+    15:       <% @restaurants.each do |restaurant| %>
+    16:         <tr  class="text-center">
+    17:           <td><%= restaurant.name %></td>
+    18:           <td><%= restaurant.address %></td>
+  
+app/views/restaurants/index.html.erb:15:in `_app_views_restaurants_index_html_erb___2327824841495309131_42875300'
+Started GET "/restaurants/new" for 127.0.0.1 at 2019-02-22 14:09:11 +0200
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_form.html.erb (110.4ms)
+  Rendered restaurants/new.html.erb within layouts/application (111.8ms)
+Started GET "/restaurants/new" for 127.0.0.1 at 2019-02-22 14:09:14 +0200
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_form.html.erb (17.4ms)
+  Rendered restaurants/new.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 3400ms (Views: 3382.9ms | ActiveRecord: 5.1ms)
+
+
+Completed 200 OK in 575ms (Views: 573.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-02-22 14:12:19 +0200
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  Rendered restaurants/index.html.erb within layouts/application (2.5ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/ukroma/Documents/INFOZAHYST/test_reastaurant_reservation/app/views/restaurants/index.html.erb:38: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+          ^~~~~~
+/home/ukroma/Documents/INFOZAHYST/test_reastaurant_reservation/app/views/restaurants/index.html.erb:40: syntax error, unexpected end-of-input, expecting keyword_end
+          end
+             ^):
+  
+app/views/restaurants/index.html.erb:38: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/restaurants/index.html.erb:40: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/" for 127.0.0.1 at 2019-02-22 14:13:25 +0200
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  Rendered restaurants/index.html.erb within layouts/application (3.5ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `any?' for nil:NilClass):
+    1: <% if @restaurants.any? %>
+    2:   <h2>You dont have restaurants</h2>
+    3:   <br>
+    4:   <%= link_to 'Create Restaurant', new_restaurant_path, class: "btn btn-primary" %>
+  
+app/views/restaurants/index.html.erb:1:in `_app_views_restaurants_index_html_erb__3337426331703949959_70190234632400'
+Started GET "/" for 127.0.0.1 at 2019-02-22 14:14:46 +0200
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  Rendered restaurants/index.html.erb within layouts/application (2.5ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    17:       </thead>
+    18: 
+    19:       <tbody>
+    20:         <% @restaurants.each do |restaurant| %>
+    21:           <tr  class="text-center">
+    22:             <td><%= restaurant.name %></td>
+    23:             <td><%= restaurant.address %></td>
+  
+app/views/restaurants/index.html.erb:20:in `_app_views_restaurants_index_html_erb__3337426331703949959_70190236482980'
+Started GET "/" for 127.0.0.1 at 2019-02-22 14:15:34 +0200
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  Rendered restaurants/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 374ms (Views: 372.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/restaurants/new" for 127.0.0.1 at 2019-02-22 14:15:38 +0200
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_form.html.erb (26.2ms)
+  Rendered restaurants/new.html.erb within layouts/application (27.9ms)
+Completed 200 OK in 104ms (Views: 86.5ms | ActiveRecord: 6.6ms)
+
+
+Started POST "/restaurants" for 127.0.0.1 at 2019-02-22 14:15:55 +0200
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XkpRKReQ60O2g4kSfzqz28RZLsOi4/GOhU/NwNn3nsXdV1aTrEiC83J2KosSgibEuawSYqXq6GAdMy7dLA3sfw==", "restaurant"=>{"name"=>"Jonhnie Restaurant", "address"=>"Peizazhna Alley, Kyiv", "open(1i)"=>"2019", "open(2i)"=>"2", "open(3i)"=>"22", "open(4i)"=>"08", "open(5i)"=>"00", "close(1i)"=>"2019", "close(2i)"=>"2", "close(3i)"=>"22", "close(4i)"=>"18", "close(5i)"=>"00"}, "commit"=>"Create Restaurant"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/restaurants_controller.rb:15
+  [1m[36mRestaurant Create (1.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "open", "close", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Jonhnie Restaurant"], ["address", "Peizazhna Alley, Kyiv"], ["open", "2019-02-22 08:00:00"], ["close", "2019-02-22 18:00:00"], ["created_at", "2019-02-22 12:15:55.231037"], ["updated_at", "2019-02-22 12:15:55.231037"]]
+  ↳ app/controllers/restaurants_controller.rb:15
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/restaurants_controller.rb:15
+Redirected to http://localhost:3000/restaurants
+Completed 302 Found in 10ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2019-02-22 14:15:55 +0200
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  Rendered restaurants/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 63ms (Views: 61.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2019-02-22 14:26:47 +0200
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  Rendered restaurants/index.html.erb within layouts/application (2.6ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `exist?' for nil:NilClass):
+    1: <% if @restaurants.exist? %>
+    2:   <h1 class="text-center">Listing Restaurants</h1>
+    3: 
+    4:   <div class="table-responsive">
+  
+app/views/restaurants/index.html.erb:1:in `_app_views_restaurants_index_html_erb__3337426331703949959_70190442183860'
+Started GET "/restaurants" for 127.0.0.1 at 2019-02-22 14:27:00 +0200
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  Rendered restaurants/index.html.erb within layouts/application (3.2ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    13:       </thead>
+    14: 
+    15:       <tbody>
+    16:         <% @restaurants.each do |restaurant| %>
+    17:           <tr  class="text-center">
+    18:             <td><%= restaurant.name %></td>
+    19:             <td><%= restaurant.address %></td>
+  
+app/views/restaurants/index.html.erb:16:in `_app_views_restaurants_index_html_erb__3337426331703949959_70190350406760'
+Started GET "/restaurants" for 127.0.0.1 at 2019-02-22 14:27:42 +0200
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  Rendered restaurants/index.html.erb within layouts/application (3.6ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `empty?' for nil:NilClass):
+    1: <% if @restaurants.empty? %>
+    2:   <h1 class="text-center">Listing Restaurants</h1>
+    3: 
+    4:   <div class="table-responsive">
+  
+app/views/restaurants/index.html.erb:1:in `_app_views_restaurants_index_html_erb___4002049050456327680_26013300'
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/restaurants" for 127.0.0.1 at 2019-02-22 14:29:01 +0200
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "restaurants" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/views/restaurants/index.html.erb:1
+  Rendered restaurants/index.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 336ms (Views: 322.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2019-02-22 14:29:41 +0200
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/restaurants/index.html.erb:1
+  Rendered restaurants/index.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 139ms (Views: 135.0ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2019-02-22 14:30:19 +0200
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/restaurants/index.html.erb:1
+  Rendered restaurants/index.html.erb within layouts/application (198.3ms)
+Completed 500 Internal Server Error in 203ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `tables_path' for #<#<Class:0x00007fe0f0981100>:0x00007fe0f1f4e5f0>
+Did you mean?  asset_path):
+    22:             <td><%= restaurant.name %></td>
+    23:             <td><%= restaurant.address %></td>
+    24:             <td><%= restaurant.open.strftime("%H:%M") %> - <%= restaurant.close.strftime("%H:%M") %></td>
+    25:             <td><%= link_to "tables", tables_path(:restaurant_id => restaurant.id), class: "btn btn-info" %></td>
+    26:             <td><%= link_to "edit restaurant", edit_restaurant_path(restaurant), class: "btn btn-info" %></td> 
+    27:             <td><%= link_to "delete restaurant", restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></td>
+    28:           </tr>
+  
+app/views/restaurants/index.html.erb:25:in `block in _app_views_restaurants_index_html_erb__2043637781741893224_70302054382880'
+app/views/restaurants/index.html.erb:20:in `_app_views_restaurants_index_html_erb__2043637781741893224_70302054382880'
+Started GET "/restaurants" for 127.0.0.1 at 2019-02-22 14:31:20 +0200
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/restaurants/index.html.erb:1
+  Rendered restaurants/index.html.erb within layouts/application (16.7ms)
+Completed 200 OK in 330ms (Views: 312.8ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-02-22 14:33:33 +0200
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/restaurants/index.html.erb:1
+  Rendered restaurants/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 568ms (Views: 553.2ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/restaurants/new" for 127.0.0.1 at 2019-02-22 14:33:34 +0200
+Processing by RestaurantsController#new as HTML
+  Rendering restaurants/new.html.erb within layouts/application
+  Rendered restaurants/_form.html.erb (32.2ms)
+  Rendered restaurants/new.html.erb within layouts/application (33.9ms)
+Completed 200 OK in 97ms (Views: 94.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/restaurants" for 127.0.0.1 at 2019-02-22 14:33:55 +0200
+Processing by RestaurantsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lHNnTUYT6PwvV8N7Xnm2L1mtByOPtzp1HWOPPrp6UOcXbmD3/cuBTOuiYOIzwSMwJFg7goi+I5uFH2wjT4AiXQ==", "restaurant"=>{"name"=>"Best Shaurma", "address"=>"Peremogu str 23, Kyiv", "open(1i)"=>"2019", "open(2i)"=>"2", "open(3i)"=>"22", "open(4i)"=>"07", "open(5i)"=>"30", "close(1i)"=>"2019", "close(2i)"=>"2", "close(3i)"=>"22", "close(4i)"=>"19", "close(5i)"=>"00"}, "commit"=>"Create Restaurant"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/restaurants_controller.rb:15
+  [1m[36mRestaurant Create (0.6ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "open", "close", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Best Shaurma"], ["address", "Peremogu str 23, Kyiv"], ["open", "2019-02-22 07:30:00"], ["close", "2019-02-22 19:00:00"], ["created_at", "2019-02-22 12:33:55.125621"], ["updated_at", "2019-02-22 12:33:55.125621"]]
+  ↳ app/controllers/restaurants_controller.rb:15
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/restaurants_controller.rb:15
+Redirected to http://localhost:3000/restaurants
+Completed 302 Found in 11ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2019-02-22 14:33:55 +0200
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.9ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/restaurants/index.html.erb:1
+  Rendered restaurants/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 64ms (Views: 61.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/restaurants/1/edit" for 127.0.0.1 at 2019-02-22 14:33:57 +0200
+Processing by RestaurantsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:45
+  Rendering restaurants/edit.html.erb within layouts/application
+  Rendered restaurants/_form.html.erb (22.7ms)
+  Rendered restaurants/edit.html.erb within layouts/application (24.3ms)
+Completed 200 OK in 83ms (Views: 78.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2019-02-22 14:34:01 +0200
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.6ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/restaurants/index.html.erb:1
+  Rendered restaurants/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 67ms (Views: 64.6ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/restaurants/2" for 127.0.0.1 at 2019-02-22 14:34:08 +0200
+Processing by RestaurantsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"U0ZIxQu5Q870/44jCbryjrJprFjDV4gDUymxIZi4iosS5GlOv6G/nYvhgJ2VPA277ineuqCxuVCQrMEiJwoknA==", "id"=>"2"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:45
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/restaurants_controller.rb:34
+  [1m[36mRestaurant Destroy (3.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:34
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/restaurants_controller.rb:34
+Redirected to http://localhost:3000/restaurants
+Completed 302 Found in 11ms (ActiveRecord: 6.4ms)
+
+
+Started GET "/restaurants" for 127.0.0.1 at 2019-02-22 14:34:08 +0200
+Processing by RestaurantsController#index as HTML
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/restaurants/index.html.erb:1
+  Rendered restaurants/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 62ms (Views: 60.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tables?restaurant_id=1" for 127.0.0.1 at 2019-02-22 14:51:39 +0200
+Processing by TablesController#index as HTML
+  Parameters: {"restaurant_id"=>"1"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tables_controller.rb:39
+  Rendering tables/index.html.erb within layouts/application
+  [1m[36mTable Load (0.5ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."restaurant_id" = $1 ORDER BY number ASC[0m  [["restaurant_id", 1]]
+  ↳ app/views/tables/index.html.erb:3
+  Rendered tables/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 106ms (Views: 55.4ms | ActiveRecord: 11.2ms)
+
+
+Started GET "/tables/new?restaurant_id=1" for 127.0.0.1 at 2019-02-22 14:51:42 +0200
+Processing by TablesController#new as HTML
+  Parameters: {"restaurant_id"=>"1"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tables_controller.rb:39
+  Rendering tables/new.html.erb within layouts/application
+  Rendered tables/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 73ms (Views: 59.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/tables?restaurant_id=1" for 127.0.0.1 at 2019-02-22 14:53:00 +0200
+Processing by TablesController#index as HTML
+  Parameters: {"restaurant_id"=>"1"}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tables_controller.rb:39
+  Rendering tables/index.html.erb within layouts/application
+  [1m[36mTable Load (0.4ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."restaurant_id" = $1 ORDER BY number ASC[0m  [["restaurant_id", 1]]
+  ↳ app/views/tables/index.html.erb:3
+  Rendered tables/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 71ms (Views: 66.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/tables/new?restaurant_id=1" for 127.0.0.1 at 2019-02-22 14:53:01 +0200
+Processing by TablesController#new as HTML
+  Parameters: {"restaurant_id"=>"1"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tables_controller.rb:39
+  Rendering tables/new.html.erb within layouts/application
+  Rendered tables/_form.html.erb (9.1ms)
+  Rendered tables/new.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 74ms (Views: 70.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/tables?restaurant_id=1" for 127.0.0.1 at 2019-02-22 14:53:08 +0200
+Processing by TablesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"J40heF6Tgy7NcojMfL5z7j/GIuSjTV/5s+x1q4PcM/KWmHriKK9ZzXGrZI66zqJkcy90oRqj+iGZ6awCTDp4dQ==", "table"=>{"number"=>"1", "num_seats"=>"4", "restaurant_id"=>"1"}, "commit"=>"Create Table", "restaurant_id"=>"1"}
+  [1m[36mRestaurant Load (1.5ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tables_controller.rb:39
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tables_controller.rb:16
+  [1m[36mRestaurant Load (0.6ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tables_controller.rb:16
+  [1m[36mTable Create (1.0ms)[0m  [1m[32mINSERT INTO "tables" ("number", "num_seats", "restaurant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["number", 1], ["num_seats", 4], ["restaurant_id", 1], ["created_at", "2019-02-22 12:53:08.564432"], ["updated_at", "2019-02-22 12:53:08.564432"]]
+  ↳ app/controllers/tables_controller.rb:16
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tables_controller.rb:16
+Redirected to http://localhost:3000/tables?restaurant_id=1
+Completed 302 Found in 31ms (ActiveRecord: 4.5ms)
+
+
+Started GET "/tables?restaurant_id=1" for 127.0.0.1 at 2019-02-22 14:53:08 +0200
+Processing by TablesController#index as HTML
+  Parameters: {"restaurant_id"=>"1"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tables_controller.rb:39
+  Rendering tables/index.html.erb within layouts/application
+  [1m[36mTable Load (0.3ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."restaurant_id" = $1 ORDER BY number ASC[0m  [["restaurant_id", 1]]
+  ↳ app/views/tables/index.html.erb:3
+  Rendered tables/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 71ms (Views: 67.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/tables/new?restaurant_id=1" for 127.0.0.1 at 2019-02-22 14:55:18 +0200
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ukroma/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by TablesController#new as HTML
+  Parameters: {"restaurant_id"=>"1"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tables_controller.rb:39
+  Rendering tables/new.html.erb within layouts/application
+  Rendered tables/_form.html.erb (24.2ms)
+  Rendered tables/new.html.erb within layouts/application (25.9ms)
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 7.1ms)
+
+
+  
+ActionView::Template::Error (Association :restaurant_id not found):
+     9:   </div>
+    10: 
+    11:   <div class="form-inputs">
+    12:     <%= f.association :restaurant_id %>
+    13:   </div>
+    14: 
+    15:   
+  
+app/views/tables/_form.html.erb:12:in `block in _app_views_tables__form_html_erb___2012361934945282950_40652140'
+app/views/tables/_form.html.erb:1:in `_app_views_tables__form_html_erb___2012361934945282950_40652140'
+app/views/tables/new.html.erb:3:in `_app_views_tables_new_html_erb___3926482452460657250_29611480'
+Started GET "/tables/new?restaurant_id=1" for 127.0.0.1 at 2019-02-22 14:55:29 +0200
+Processing by TablesController#new as HTML
+  Parameters: {"restaurant_id"=>"1"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tables_controller.rb:39
+  Rendering tables/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/tables/_form.html.erb:12
+  Rendered tables/_form.html.erb (13.7ms)
+  Rendered tables/new.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 329ms (Views: 325.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tables/new?restaurant_id=1" for 127.0.0.1 at 2019-02-22 14:56:03 +0200
+Processing by TablesController#new as HTML
+  Parameters: {"restaurant_id"=>"1"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tables_controller.rb:39
+  Rendering tables/new.html.erb within layouts/application
+  Rendered tables/_form.html.erb (250.5ms)
+  Rendered tables/new.html.erb within layouts/application (252.3ms)
+Completed 500 Internal Server Error in 258ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `hidden' for #<SimpleForm::FormBuilder:0x00007fd728b38678>):
+     9:   </div>
+    10: 
+    11:   <div class="form-inputs">
+    12:     <%= f.hidden :restaurant_id %>
+    13:   </div>
+    14: 
+    15:   
+  
+app/views/tables/_form.html.erb:12:in `block in _app_views_tables__form_html_erb___2012361934945282950_70281038874000'
+app/views/tables/_form.html.erb:1:in `_app_views_tables__form_html_erb___2012361934945282950_70281038874000'
+app/views/tables/new.html.erb:3:in `_app_views_tables_new_html_erb___3926482452460657250_70281039064240'
+Started GET "/tables/new?restaurant_id=1" for 127.0.0.1 at 2019-02-22 14:57:34 +0200
+Processing by TablesController#new as HTML
+  Parameters: {"restaurant_id"=>"1"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tables_controller.rb:39
+  Rendering tables/new.html.erb within layouts/application
+  Rendered tables/_form.html.erb (175.7ms)
+  Rendered tables/new.html.erb within layouts/application (177.1ms)
+Completed 500 Internal Server Error in 181ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `hidden' for #<SimpleForm::FormBuilder:0x00007fd729af2370>):
+    1: <%= simple_form_for(@table, url: tables_path(:restaurant_id => @restaurant.id), html: { class: 'form' }) do |f| %>
+    2: 
+    3:   <%= f.hidden :restaurant_id %>
+    4: 
+    5:   <div class="form_inputs">
+    6:     <%= f.input :number %>
+  
+app/views/tables/_form.html.erb:3:in `block in _app_views_tables__form_html_erb___2012361934945282950_70281047526860'
+app/views/tables/_form.html.erb:1:in `_app_views_tables__form_html_erb___2012361934945282950_70281047526860'
+app/views/tables/new.html.erb:3:in `_app_views_tables_new_html_erb___3926482452460657250_70281047553860'
+Started GET "/tables/new?restaurant_id=1" for 127.0.0.1 at 2019-02-22 14:58:08 +0200
+Processing by TablesController#new as HTML
+  Parameters: {"restaurant_id"=>"1"}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tables_controller.rb:39
+  Rendering tables/new.html.erb within layouts/application
+  Rendered tables/_form.html.erb (1.7ms)
+  Rendered tables/new.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (no implicit conversion of Symbol into Integer):
+    1: <%= simple_form_for(@table, url: tables_path(:restaurant_id => @restaurant.id), html: { class: 'form' }) do |f| %>
+    2: 
+    3:   <%= f.input :restaurant_id, :hidden %>
+    4: 
+    5:   <div class="form_inputs">
+    6:     <%= f.input :number %>
+  
+app/views/tables/_form.html.erb:3:in `block in _app_views_tables__form_html_erb___2012361934945282950_70281113268660'
+app/views/tables/_form.html.erb:1:in `_app_views_tables__form_html_erb___2012361934945282950_70281113268660'
+app/views/tables/new.html.erb:3:in `_app_views_tables_new_html_erb___3926482452460657250_70281115109740'
+Started GET "/tables/new?restaurant_id=1" for 127.0.0.1 at 2019-02-22 14:58:40 +0200
+Processing by TablesController#new as HTML
+  Parameters: {"restaurant_id"=>"1"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tables_controller.rb:39
+  Rendering tables/new.html.erb within layouts/application
+  Rendered tables/_form.html.erb (21.3ms)
+  Rendered tables/new.html.erb within layouts/application (22.5ms)
+Completed 200 OK in 90ms (Views: 87.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/tables?restaurant_id=1" for 127.0.0.1 at 2019-02-22 14:58:47 +0200
+Processing by TablesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xpd/+RBW/3Z1GFu+BW+M9//Ig+Pix9TqynIyWAf58FsfNV5ypE4DJQoGVQCZ6XPCo4jxAYEh5bkJ90JbuEteTA==", "table"=>{"restaurant_id"=>"1", "number"=>"2", "num_seats"=>"4"}, "commit"=>"Create Table", "restaurant_id"=>"1"}
+  [1m[36mRestaurant Load (0.8ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tables_controller.rb:39
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tables_controller.rb:16
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tables_controller.rb:16
+  [1m[36mTable Create (0.7ms)[0m  [1m[32mINSERT INTO "tables" ("number", "num_seats", "restaurant_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["number", 2], ["num_seats", 4], ["restaurant_id", 1], ["created_at", "2019-02-22 12:58:47.343674"], ["updated_at", "2019-02-22 12:58:47.343674"]]
+  ↳ app/controllers/tables_controller.rb:16
+  [1m[35m (9.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tables_controller.rb:16
+Redirected to http://localhost:3000/tables?restaurant_id=1
+Completed 302 Found in 26ms (ActiveRecord: 11.2ms)
+
+
+Started GET "/tables?restaurant_id=1" for 127.0.0.1 at 2019-02-22 14:58:47 +0200
+Processing by TablesController#index as HTML
+  Parameters: {"restaurant_id"=>"1"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT  "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tables_controller.rb:39
+  Rendering tables/index.html.erb within layouts/application
+  [1m[36mTable Load (0.6ms)[0m  [1m[34mSELECT "tables".* FROM "tables" WHERE "tables"."restaurant_id" = $1 ORDER BY number ASC[0m  [["restaurant_id", 1]]
+  ↳ app/views/tables/index.html.erb:3
+  Rendered tables/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 79ms (Views: 74.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/restaurants?restaurant_id=1" for 127.0.0.1 at 2019-02-22 14:59:03 +0200
+Processing by RestaurantsController#index as HTML
+  Parameters: {"restaurant_id"=>"1"}
+  Rendering restaurants/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/restaurants/index.html.erb:1
+  Rendered restaurants/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 67ms (Views: 65.1ms | ActiveRecord: 0.4ms)
+
+
